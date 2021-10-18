@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React  from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import Header from './components/Header';
+import NotFound from './pages/NotFound';
+import { Suspense,lazy } from 'react';
+import Loader from './components/Loader';
 
-function App() {
+// Pages
+const HomePage = lazy(()=> import('./pages/Homepage'));
+const PokemonPage = lazy(()=> import('./pages/PokemonPage'));
+const AddToFavourite = lazy(()=> import('./pages/AddToFavourite'));
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <Suspense fallback = {<div><Loader /></div>}>
+      <Header/>
+      <Container>
+      <Switch>
+        <Route path='/' component={HomePage} exact/>
+        <Route path='/pokemon/:id' component={PokemonPage}/>
+        <Route path='/favourite' component = {AddToFavourite} />
+        <Route path="*" component = {NotFound}/>
+        </Switch>
+      </Container>
+      </Suspense>
+    </Router>
   );
 }
 
