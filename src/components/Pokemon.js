@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import {addToFav} from '../actions/index';
 import { db } from '../firebase_config';
 import firebase from 'firebase/compat/app';
-import { ToastContainer, toast } from 'react-toastify';
+
 
 const Pokemon = ({ pokemon }) => {
     const dispatch = useDispatch();
@@ -21,12 +21,12 @@ const Pokemon = ({ pokemon }) => {
        .get()
        .then((docm)=> {
          if(!docm.empty){
-           toast.error('Item Already Exist')
+           console.log('Item Already Exist')
          }
          else{
           db.collection('fav').add(data)
           dispatch(addToFav(data))
-         toast.success('Favourite added')
+        console.log('Favourite added')
          }
        })
         
@@ -64,7 +64,7 @@ const Pokemon = ({ pokemon }) => {
                 </Col>
               </Card.Body>
             </Card>
-            <ToastContainer />
+         
            
         </>
       )
