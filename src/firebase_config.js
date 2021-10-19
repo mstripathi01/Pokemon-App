@@ -3,7 +3,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCJgyrpm9l5DGF9yp9KT756cSbu_lwSyYI",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "pokemon-api-286ca.firebaseapp.com",
     projectId: "pokemon-api-286ca",
     storageBucket: "pokemon-api-286ca.appspot.com",
