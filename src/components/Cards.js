@@ -1,5 +1,6 @@
 import React from 'react'
-import classes from './Cards.module.css' 
+import classes from './Cards.module.css'
+import 'animate.css'; 
 const Cards = (props) => {
   return (
     <div className = {classes.card}>

@@ -4,6 +4,7 @@ import  { Row, Col }  from 'react-bootstrap';
 import Pokemon from '../components/Pokemon';
 import Loader from '../components/Loader'
 
+
 const Homepage = () => {
 
     const [pokemon, setPokemon] = useState([]);
@@ -35,7 +36,7 @@ const Homepage = () => {
         ) : (
             <Row>
                 {pokemon.map( p =>(
-                    <Col key={p.data.name} xs={12} sm={12} md={4} lg={4} xl={4}>
+                    <Col key={p.data.name} xs={12} sm={12} md={3} lg={3} xl={3}>
                         <Pokemon pokemon={p.data}/>
                        
                     </Col>

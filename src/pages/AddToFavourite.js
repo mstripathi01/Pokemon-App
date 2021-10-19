@@ -11,15 +11,16 @@ const AddToFavourite = () => {
   const [favourite, setFavourite] = useState([])
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
-
+  
   const length = favourite.length
+
 
   useEffect(() => {
     setLoading(true)
     function fetchData() {
       db.collection('fav')
         .orderBy('timestamp', 'asc')
-        .onSnapshot((snapshot) =>
+        .onSnapshot((snapshot) => 
           setFavourite(
             snapshot.docs.map((doc) => ({
               id: doc.id,

@@ -13,12 +13,11 @@ const PokemonPage = () => {
     const [loading, setLoading] = useState(true);
 
     const {id} = useParams();
-    // const id = match.params.id;
+
 
     const getPokemon = useCallback(async (id) => {
         const details = await getPokemonData(id);
         setPokemonDetails(details.data);
-        console.log(details.data)
         setLoading(false);
     },[])
 
@@ -44,6 +43,7 @@ const PokemonPage = () => {
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                         <Card className='my-3 p-3 rounded text-center shadow p-3 mb-5 bg-white' style={{ border: 'none' }}>
                             <Link to={`/pokemon/${pokemonDetails.id}`}>
+                            
                                 <Card.Img style={{ width: '15rem' }} src={pokemonDetails.sprites.front_default} variant='top'/>
                             </Link>
                             <Card.Body className={`${pokemonDetails.types[0].type.name} rounded text-white`}>
@@ -70,17 +70,17 @@ const PokemonPage = () => {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <Card.Img style={{ width: '15rem' }} src={pokemonDetails.sprites.front_default}/>
+                                            <Card.Img style={{ width: '10rem' }} src={pokemonDetails.sprites.front_default}/>
                                             <Card.Text>Normal Form</Card.Text>
                                         </Col>
                                         <Col>
-                                            <Card.Img style={{ width: '15rem' }} src={pokemonDetails.sprites.front_shiny}/>
+                                            <Card.Img style={{ width: '10rem' }} src={pokemonDetails.sprites.front_shiny}/>
                                             <Card.Text>Shiny Form</Card.Text>
                                         </Col>
                                     </Row>
                                     <Row className='mt-4'>
                                         <Col  xs={12} sm={12} md={12} lg={12} xl={12}>
-                                            <div className='px-4 py-1 rounded' style={{ border: '1px black solid' }}>Abilities</div>
+                                            <div className='px-4 py-1 rounded' style={{ border: '3px black rounded' }}>Abilities</div>
                                         </Col>
                                     </Row>
                                     <Row className='text-center'>
